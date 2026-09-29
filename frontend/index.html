@@ -1,0 +1,108 @@
+d<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <p class="eyebrow">POKÉMON REST API</p>
+            <h1>Pokédex Manager</h1>
+            <p class="subtitle">Manage your Pokémon collection through your Flask API.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="status" class="status" role="alert" aria-live="polite"></div>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">COLLECTION</p>
+                    <h2>All Pokémon</h2>
+                </div>
+                <button id="refreshBtn" class="secondary-btn" type="button">↻ Refresh</button>
+            </div>
+
+            <div id="loading" class="loading">Loading Pokémon...</div>
+            <div id="pokemonList" class="pokemon-grid"></div>
+            <div id="emptyState" class="empty hidden">No Pokémon found.</div>
+        </section>
+
+        <div class="two-column">
+            <section class="panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">DETAIL</p>
+                        <h2>View Pokémon</h2>
+                    </div>
+                </div>
+
+                <form id="detailForm" class="inline-form">
+                    <label for="detailId">Pokémon ID</label>
+                    <div class="input-row">
+                        <input id="detailId" type="number" min="1" placeholder="e.g. 1" required>
+                        <button class="secondary-btn" type="submit">View</button>
+                    </div>
+                </form>
+
+                <div id="detailResult" class="detail-card muted">
+                    Enter an ID to view one Pokémon.
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">CRUD</p>
+                        <h2 id="formTitle">Add Pokémon</h2>
+                    </div>
+                    <button id="cancelEditBtn" class="text-btn hidden" type="button">Cancel edit</button>
+                </div>
+
+                <form id="pokemonForm">
+                    <input id="editingId" type="hidden">
+
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input id="name" type="text" placeholder="e.g. Mimikyu" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="type">Type</label>
+                            <input id="type" type="text" placeholder="e.g. Ghost/Fairy" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="hp">HP</label>
+                            <input id="hp" type="number" min="0" step="1" placeholder="55" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="attack">Attack</label>
+                            <input id="attack" type="number" min="0" step="1" placeholder="90" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="defense">Defense</label>
+                            <input id="defense" type="number" min="0" step="1" placeholder="80" required>
+                        </div>
+                    </div>
+
+                    <button id="submitBtn" class="primary-btn" type="submit">Add Pokémon</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>Flask + SQLite + Fetch API</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
